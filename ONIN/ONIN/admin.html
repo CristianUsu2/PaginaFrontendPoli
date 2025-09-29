@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panel de Servicios - ONIN</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f4f8;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: #0d1b2a;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 40px auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    form {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    input {
+      flex: 1;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    button {
+      background: #4a90e2;
+      border: none;
+      color: #fff;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #357abd;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: center;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background: #fca311;
+      color: #fff;
+    }
+
+    td button {
+      padding: 6px 12px;
+      font-size: 14px;
+      margin: 2px;
+      border-radius: 5px;
+    }
+
+    .edit {
+      background: #007bff;
+      color: white;
+      border: none;
+    }
+
+    .delete {
+      background: #dc3545;
+      color: white;
+      border: none;
+    }
+
+    .edit:hover { background: #0056b3; }
+    .delete:hover { background: #a71d2a; }
+
+    .logout {
+      background: #dc3545;
+      color: #fff;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 6px;
+      float: right;
+      margin-top: -10px;
+      cursor: pointer;
+    }
+
+    .logout:hover {
+      background: #b71c1c;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Panel de Administración - Servicios</h1>
+    <button class="logout" onclick="logout()">Cerrar sesión</button>
+  </header>
+
+  <div class="container">
+    <h2>Gestión de Servicios</h2>
+
+    <!-- FORMULARIO CRUD -->
+    <form id="serviceForm">
+      <input type="text" id="name" placeholder="Nombre del servicio" required />
+      <input type="text" id="price" placeholder="Precio ($)" required />
+      <input type="text" id="description" placeholder="Descripción corta" required />
+      <button type="submit">Agregar</button>
+    </form>
+
+    <!-- TABLA CRUD -->
+    <table id="serviceTable">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Precio</th>
+          <th>Descripción</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Datos dinámicos -->
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    const form = document.getElementById("serviceForm");
+    const tableBody = document.querySelector("#serviceTable tbody");
+    let editIndex = -1;
+
+    // ✅ Servicios precargados
+    let services = [
+      { name: "Soporte Técnico", price: "$150", description: "Solucionamos fallas y mantenemos tus equipos activos." },
+      { name: "Desarrollo de Software", price: "$300", description: "Creamos aplicaciones a la medida." },
+      { name: "Mantenimiento de Equipos", price: "$100", description: "Mejoramos el rendimiento de tus dispositivos." },
+      { name: "Instalación de Redes", price: "$100", description: "Implementamos redes seguras y eficientes." },
+      { name: "Seguridad Informática", price: "$150", description: "Protegemos tus sistemas frente a amenazas." },
+      { name: "Seguridad Informática Avanzada", price: "$200", description: "Ofrecemos protección avanzada y monitoreo." },
+      { name: "Gestión de Proyectos", price: "$90", description: "Organizamos y guiamos tus proyectos al éxito." },
+      { name: "Análisis de Datos", price: "$75", description: "Convertimos datos en decisiones estratégicas." },
+      { name: "Análisis Estadístico", price: "$90", description: "Interpretamos datos con precisión profesional." }
+    ];
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const price = document.getElementById("price").value;
+      const description = document.getElementById("description").value;
+
+      if (editIndex === -1) {
+        services.push({ name, price, description });
+      } else {
+        services[editIndex] = { name, price, description };
+        editIndex = -1;
+      }
+
+      form.reset();
+      renderTable();
+    });
+
+    function renderTable() {
+      tableBody.innerHTML = "";
+      services.forEach((service, index) => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${service.name}</td>
+          <td>${service.price}</td>
+          <td>${service.description}</td>
+          <td>
+            <button class="edit" onclick="editService(${index})">Editar</button>
+            <button class="delete" onclick="deleteService(${index})">Eliminar</button>
+          </td>
+        `;
+        tableBody.appendChild(row);
+      });
+    }
+
+    window.editService = (index) => {
+      const service = services[index];
+      document.getElementById("name").value = service.name;
+      document.getElementById("price").value = service.price;
+      document.getElementById("description").value = service.description;
+      editIndex = index;
+    };
+
+    window.deleteService = (index) => {
+      services.splice(index, 1);
+      renderTable();
+    };
+
+    function logout() {
+      window.location.href = "Login.html";
+    }
+
+    // Renderizar tabla al cargar
+    renderTable();
+  </script>
+</body>
+</html>
