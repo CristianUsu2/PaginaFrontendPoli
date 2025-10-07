@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "nombre": "Soporte Técnico",
+    "precio": 150,
+    "descripcion": "Solucionamos fallas y mantenemos tus equipos activos.",
+    "cantidad": 25,
+    "promocion": true
+  },
+  {
+    "id": 2,
+    "nombre": "Desarrollo de Software",
+    "precio": 300,
+    "descripcion": "Creamos aplicaciones a la medida.",
+    "cantidad": 15,
+    "promocion": false
+  },
+  {
+    "id": 3,
+    "nombre": "Mantenimiento de Equipos",
+    "precio": 100,
+    "descripcion": "Mejoramos el rendimiento de tus dispositivos.",
+    "cantidad": 30,
+    "promocion": false
+  },
+  {
+    "id": 4,
+    "nombre": "Instalación de Redes",
+    "precio": 100,
+    "descripcion": "Implementamos redes seguras y eficientes.",
+    "cantidad": 20,
+    "promocion": true
+  },
+  {
+    "id": 5,
+    "nombre": "Seguridad Informática",
+    "precio": 150,
+    "descripcion": "Protegemos tus sistemas frente a amenazas.",
+    "cantidad": 10,
+    "promocion": false
+  },
+  {
+    "id": 6,
+    "nombre": "Seguridad Informática Avanzada",
+    "precio": 200,
+    "descripcion": "Ofrecemos protección avanzada y monitoreo.",
+    "cantidad": 8,
+    "promocion": true
+  },
+  {
+    "id": 7,
+    "nombre": "Gestión de Proyectos",
+    "precio": 90,
+    "descripcion": "Organizamos y guiamos tus proyectos al éxito.",
+    "cantidad": 18,
+    "promocion": false
+  },
+  {
+    "id": 8,
+    "nombre": "Análisis de Datos",
+    "precio": 75,
+    "descripcion": "Convertimos datos en decisiones estratégicas.",
+    "cantidad": 22,
+    "promocion": false
+  },
+  {
+    "id": 9,
+    "nombre": "Análisis Estadístico",
+    "precio": 90,
+    "descripcion": "Interpretamos datos con precisión profesional.",
+    "cantidad": 12,
+    "promocion": true
+  }
+]

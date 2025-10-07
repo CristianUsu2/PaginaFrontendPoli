@@ -1,260 +1,257 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ONIN - Iniciar Sesión</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ONIN - Iniciar Sesión</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #a8c8ec 0%, #7fb3d3 50%, #ffffff 100%);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #a8c8ec 0%, #7fb3d3 50%, #ffffff 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
 
-        .logo {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
+    .logo {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+}
 
-        .logo-icon {
-            width: 24px;
-            height: 24px;
-            background: #4a90e2;
-            border-radius: 50%;
-            position: relative;
-        }
+.logo img {
+  height: 28px;   /* 👈 tamaño reducido (ajústalo entre 25px y 30px) */
+  width: auto;
+  display: block;
+}
 
-        .logo-icon::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 12px;
-            height: 12px;
-            background: white;
-            border-radius: 50%;
-        }
+    .logo-icon {
+      width: 24px;
+      height: 24px;
+      background: #4a90e2;
+      border-radius: 50%;
+      position: relative;
+    }
 
-        .logo-text {
-            font-size: 18px;
-            font-weight: bold;
-            color: #4a90e2;
-            letter-spacing: 2px;
-        }
+    .logo-icon::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 12px;
+      height: 12px;
+      background: white;
+      border-radius: 50%;
+    }
 
-        .login-container {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 40px;
-            width: 400px;
-            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            text-align: center;
-        }
+    .logo-text {
+      font-size: 18px;
+      font-weight: bold;
+      color: #4a90e2;
+      letter-spacing: 2px;
+    }
 
-        .login-title {
-            color: white;
-            font-size: 25px;
-            font-weight: 600px;
-            margin-bottom: 30px;
-            font-weight: 300;
-            letter-spacing: 1px;
-        }
+    .login-container {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 40px;
+      width: 400px;
+      box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      text-align: center;
+    }
 
-        .form-group {
-            margin-bottom: 20px;
-            text-align: left;
-        }
+    .login-title {
+      color: white;
+      font-size: 25px;
+      margin-bottom: 30px;
+      font-weight: 300;
+      letter-spacing: 1px;
+    }
 
-        .form-group label {
-            display: block;
-            color: white;
-            font-size: 14px;
-            margin-bottom: 5px;
-            font-weight: 400;
-        }
+    .form-group {
+      margin-bottom: 20px;
+      text-align: left;
+    }
 
-        .form-group input {
-            width: 100%;
-            padding: 12px 15px;
-            border: none;
-            border-radius: 5px;
-            background: rgba(255, 255, 255, 0.9);
-            font-size: 14px;
-            transition: all 0.3s ease;
-        }
+    .form-group label {
+      display: block;
+      color: white;
+      font-size: 14px;
+      margin-bottom: 5px;
+      font-weight: 400;
+    }
 
-        .form-group input:focus {
-            outline: none;
-            background: white;
-            box-shadow: 0 0 10px rgba(74, 144, 226, 0.3);
-        }
+    .form-group input {
+      width: 100%;
+      padding: 12px 15px;
+      border: none;
+      border-radius: 5px;
+      background: rgba(255, 255, 255, 0.9);
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
 
-        .login-btn {
-            background: #4a90e2;
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 25px;
-            font-size: 14px;
-            font-weight: 500;
-            cursor: pointer;
-            margin-top: 20px;
-            transition: all 0.3s ease;
-            letter-spacing: 1px;
-        }
+    .form-group input:focus {
+      outline: none;
+      background: white;
+      box-shadow: 0 0 10px rgba(74, 144, 226, 0.3);
+    }
 
-        .login-btn:hover {
-            background: #357abd;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(74, 144, 226, 0.4);
-        }
+    .login-btn {
+      background: #4a90e2;
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 25px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: all 0.3s ease;
+      letter-spacing: 1px;
+    }
 
-        /* Notificaciones */
-        .notification {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: white;
-            color: #333;
-            padding: 15px 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            border-left: 4px solid #4a90e2;
-            opacity: 0;
-            transform: translateX(100%);
-            transition: all 0.3s ease;
-            z-index: 1000;
-            max-width: 300px;
-        }
+    .login-btn:hover {
+      background: #357abd;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(74, 144, 226, 0.4);
+    }
 
-        .notification.show {
-            opacity: 1;
-            transform: translateX(0);
-        }
+    /* Notificaciones */
+    .notification {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: white;
+      color: #333;
+      padding: 15px 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      border-left: 4px solid #4a90e2;
+      opacity: 0;
+      transform: translateX(100%);
+      transition: all 0.3s ease;
+      z-index: 1000;
+      max-width: 300px;
+    }
 
-        .notification.success {
-            border-left-color: #28a745;
-        }
+    .notification.show {
+      opacity: 1;
+      transform: translateX(0);
+    }
 
-        .notification.error {
-            border-left-color: #dc3545;
-        }
+    .notification.success {
+      border-left-color: #28a745;
+    }
 
-        .notification.warning {
-            border-left-color: #ffc107;
-        }
+    .notification.error {
+      border-left-color: #dc3545;
+    }
 
-        .notification-title {
-            font-weight: bold;
-            margin-bottom: 5px;
-            font-size: 14px;
-        }
+    .notification.warning {
+      border-left-color: #ffc107;
+    }
 
-        .notification-message {
-            font-size: 13px;
-            color: #666;
-        }
-    </style>
+    .notification-title {
+      font-weight: bold;
+      margin-bottom: 5px;
+      font-size: 14px;
+    }
+
+    .notification-message {
+      font-size: 13px;
+      color: #666;
+    }
+  </style>
 </head>
 <body>
-    <div class="logo">
-        <div class="logo-icon"></div>
-        <span class="logo-text">ONIN</span>
-    </div>
+  <div class="logo">
+  <img src="images/logo.png" alt="Logo ONIN">
+</div>
 
-    <div class="login-container">
-        <h2 class="login-title">Iniciar sesión</h2>
-        
-        <form id="loginForm">
-            <div class="form-group">
-                <label for="usuario">Usuario:</label>
-                <input type="text" id="usuario" name="usuario" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="contrasena">Contraseña:</label>
-                <input type="password" id="contrasena" name="contrasena" required>
-            </div>
-            
-            <button type="submit" class="login-btn">ENTRAR</button>
-        </form>
-    </div>
+  <div class="login-container">
+    <h2 class="login-title">Iniciar sesión</h2>
+    <form id="loginForm">
+      <div class="form-group">
+        <label for="usuario">Usuario:</label>
+        <input type="text" id="usuario" name="usuario" required>
+      </div>
 
-    <div id="notification" class="notification">
-        <div class="notification-title"></div>
-        <div class="notification-message"></div>
-    </div>
+      <div class="form-group">
+        <label for="contrasena">Contraseña:</label>
+        <input type="password" id="contrasena" name="contrasena" required>
+      </div>
 
-    <script>
-        function showNotification(title, message, type = 'info') {
-            const notification = document.getElementById('notification');
-            const titleEl = notification.querySelector('.notification-title');
-            const messageEl = notification.querySelector('.notification-message');
-            
-            titleEl.textContent = title;
-            messageEl.textContent = message;
-            
-            
-            notification.className = 'notification';
-            notification.classList.add(type, 'show');
-            
-            
-            setTimeout(() => {
-                notification.classList.remove('show');
-            }, 4000);
+      <button type="submit" class="login-btn">ENTRAR</button>
+    </form>
+  </div>
+
+  <div id="notification" class="notification">
+    <div class="notification-title"></div>
+    <div class="notification-message"></div>
+  </div>
+
+  <script>
+    function showNotification(title, message, type = 'info') {
+      const notification = document.getElementById('notification');
+      const titleEl = notification.querySelector('.notification-title');
+      const messageEl = notification.querySelector('.notification-message');
+
+      titleEl.textContent = title;
+      messageEl.textContent = message;
+
+      notification.className = 'notification';
+      notification.classList.add(type, 'show');
+
+      setTimeout(() => {
+        notification.classList.remove('show');
+      }, 4000);
+    }
+
+    document.getElementById('loginForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const usuario = document.getElementById('usuario').value;
+      const contrasena = document.getElementById('contrasena').value;
+
+      if (!usuario || !contrasena) {
+        showNotification('Error', 'Por favor complete todos los campos', 'error');
+        return;
+      }
+
+      showNotification('Procesando...', 'Verificando credenciales', 'warning');
+
+      setTimeout(() => {
+        // ✅ Verificar credenciales correctas
+        if (usuario === "admin" && contrasena === "1234") {
+          showNotification('¡Bienvenido!', `Hola ${usuario}, acceso concedido`, 'success');
+          setTimeout(() => {
+            window.location.href = "admin.html"; // Redirige al CRUD
+          }, 1200);
+        } else {
+          showNotification('Error de autenticación', 'Usuario o contraseña incorrectos', 'error');
         }
+      }, 1500);
+    });
 
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const usuario = document.getElementById('usuario').value;
-            const contrasena = document.getElementById('contrasena').value;
-            
-            if (!usuario || !contrasena) {
-                showNotification('Error', 'Por favor complete todos los campos', 'error');
-                return;
-            }
-            
-            
-            showNotification('Procesando...', 'Verificando credenciales', 'warning');
-            
-            setTimeout(() => {
-                
-                const random = Math.random();
-                
-                if (random > 0.7) {
-                    showNotification('¡Bienvenido!', `Hola ${usuario}, acceso concedido`, 'success');
-                } else if (random > 0.4) {
-                    showNotification('Error de autenticación', 'Usuario o contraseña incorrectos', 'error');
-                } else {
-                    showNotification('Conexión', 'Verificando servidor...', 'info');
-                }
-            }, 1500);
-        });
-
-        
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                showNotification('Sistema ONIN', 'Bienvenido al portal de acceso', 'info');
-            }, 500);
-        });
-    </script>
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        showNotification('Sistema ONIN', 'Bienvenido al portal de acceso', 'info');
+      }, 500);
+    });
+  </script>
 </body>
 </html>
